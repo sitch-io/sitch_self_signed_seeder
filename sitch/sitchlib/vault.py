@@ -6,7 +6,7 @@ class VaultObject(object):
         self.url = config.vault_url
         self.root_token = config.vault_token
         self.client = hvac.Client(url=config.vault_url, token=self.root_token)
-        self.logstash_ca_cert = config.logstash_ca_cert
+        self.logstash_ca_cert = self.get_from_file(config.logstash_ca_cert)
         self.logstash_svr_crt = self.get_from_file(config.logstash_server_cert)
         self.logstash_svr_key = self.get_from_file(config.logstash_server_key)
         self.logstash_cli_crt = self.get_from_file(config.logstash_client_cert)
